@@ -1,0 +1,17 @@
+{
+    "name": "realistic_production_utils",
+    "version": "0.0.1",
+    "factorio_version": "2.1",
+    "title": "Realistic Production Utils",
+    "author": "Appalings03",
+    "contact": "",
+    "homepage": "",
+    "description": "Utilities for Realistic Production",
+    "dependencies": [
+        "base >= 2.1"
+    ],
+    "package": {
+        "ignore": [],
+        "scripts": {}
+    }
+}
