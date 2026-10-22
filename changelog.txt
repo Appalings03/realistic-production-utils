@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 2026-10-22
+  Features:
+    - Sortie initiale du mod.
+    - Ajout des configurations de base.
+  Bugfixes:
+    - Correction des premiers bugs de jeunesse.
+  Changes:
+    - Mise en place de la structure de base du mod.
+    - Ajout des dépendances initiales.
