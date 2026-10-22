@@ -6,11 +6,12 @@ Oct 9, 2026 · @Martin
 
 À écrire en premier : toutes les autres fonctions appellent celles-ci.
 
-- [x] `normalize_name(name)` : minuscules et `_` à la place des espaces
-- [x] `icon_path(name)` : chemin de l'icône dans le mod assets
-- [x] `add_prototype(proto)` : garde anti-doublons et `log` des prototypes ignorés
-- [x] `copy_prototype(type, name, overrides)` : `deepcopy` d'un prototype vanilla, puis modifications
-- [x] `get_setting(name)` : lecture des settings (densité, nodes purs)
+- [X] `normalize_name(name)` : minuscules et `_` à la place des espaces
+- [X] `icon_path(name)` : chemin de l'icône dans le mod assets
+- [X] `add_prototype(proto)` : garde anti-doublons et `log` des prototypes ignorés
+- [X] `copy_prototype(type, name, overrides)` : `deepcopy` d'un prototype vanilla, puis modifications
+- [X] `get_setting(name)` : lecture des settings (densité, nodes purs)
+- [ ] Need to change icon_path(name) into icon_path(name, path) with path being a global var for each mod
 
 ## Ore
 
