@@ -1,7 +1,7 @@
 local gen_utils = {}
 
 function gen_utils.normalize_name(name)
-    return (string.lower(name):gsub(" ", "_"))
+    return (string.lower(name):gsub(" ", "-"))
 end
 
 -- utils/general.lua : remplace l'ancien gen_utils.icon_path (et gen_utils.trancate, à supprimer)
