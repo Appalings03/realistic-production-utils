@@ -49,6 +49,6 @@ ore.create_recipe{
 }
 ```
 
-`create_fluid` requires `base_color` and `flow_color`. Unless `dev` is explicitly provided, item, fluid, recipe, and technology icons follow the `rp-dev-assets` startup setting (and the current legacy setting name, `Dev assets`). `create_resource` requires complete `minable.results`, `stages`, and `map_color` definitions; callers provide their intended autoplace settings. `create_technology` requires a `unit` and prefixes custom prerequisite technology and unlocked recipe references. Item groups use development placeholders by default until group art is supplied.
+`create_fluid` requires `base_color` and `flow_color`. Unless `dev` is explicitly provided, item, fluid, recipe, and technology icons follow the `rp-dev-assets` startup setting. `create_resource` requires complete `minable.results`, `stages`, and `map_color` definitions; callers provide their intended autoplace settings. `create_technology` requires a `unit` and prefixes custom prerequisite technology and unlocked recipe references. Item groups use development placeholders by default until group art is supplied.
 
 Constructors return `true` when the prototype was registered and `false` when an existing prototype caused it to be skipped (with the skip logged by the shared helper).

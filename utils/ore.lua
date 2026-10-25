@@ -26,17 +26,24 @@ local VANILLA_IDS = {
 
 local INTERNAL_FIELDS = {
     associated_with = true,
+    atomic = true,
+    base = true,
     dev = true,
     extraction = true,
     form = true,
+    ingredients = true,
     kind = true,
     level = true,
+    name = true,
     name_en = true,
     name_fr = true,
+    origin = true,
     picture = true,
     prototype = true,
     size = true,
+    symbol = true,
     tint = true,
+    type = true,
     vanilla = true,
 }
 
