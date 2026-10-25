@@ -1,10 +1,8 @@
 local gen_utils = {}
 
 function gen_utils.normalize_name(name)
-    return (string.lower(name):gsub(" ", "-"))
+    return (string.lower(name):gsub("[%s_]+", "-"))
 end
-
--- utils/general.lua : remplace l'ancien gen_utils.icon_path (et gen_utils.trancate, à supprimer)
 
 local ASSETS_ROOT = "__realistic_production_assets__/graphics/"
 
@@ -44,10 +42,6 @@ function gen_utils.icons(name, opts)
     if opts.tint then layer.tint = opts.tint end
     return { layer }
 end
-
--- Utilisation côté ore (le setting est lu par ore, pas par utils) :
---   local dev = gen_utils.get_settings("rp-placeholder-icons")
---   icons = gen_utils.icons(item.name, { dev = dev, folder = "items", tint = TINTS[item.kind] })
 
 function gen_utils.add_proto(proto)
     local existing = data.raw[proto.type] and data.raw[proto.type][proto.name]
