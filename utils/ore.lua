@@ -9,6 +9,9 @@ local VANILLA_IDS = {
         ["copper-ore"] = true,
         ["uranium-ore"] = true,
         ["coal"] = true,
+        ["iron-plate"] = true,
+        ["copper-plate"] = true,
+        ["steel-plate"] = true,
     },
     fluid = {
         ["crude-oil"] = true,
@@ -24,6 +27,8 @@ local VANILLA_IDS = {
     },
 }
 
+-- Regarder pour par la suite (dernière phase ajouter les item/fluides/ressource de space age dans la liste) avec un if space-age then
+-- cette condition sera placer dans un autre mod surement appeler realistic_production_space_age qui prendra le meme code que realistic_production_core
 local INTERNAL_FIELDS = {
     associated_with = true,
     atomic = true,
@@ -39,12 +44,16 @@ local INTERNAL_FIELDS = {
     name_fr = true,
     origin = true,
     picture = true,
+    primary = true,
     prototype = true,
     size = true,
     symbol = true,
+    tech = true,
     tint = true,
     type = true,
     vanilla = true,
+    volatile = true,
+    world = true,
 }
 
 local function assert_table(value, label)
@@ -239,6 +248,14 @@ function ore.create_fluid(definition)
     local prototype = copy_definition(definition)
     prototype.type = "fluid"
     prototype.name = prototype_name(name, "fluid", false)
+    if prototype.default_temperature == nil then
+        prototype.default_temperature = 15
+    end
+    assert(type(prototype.default_temperature) == "number" and
+        prototype.default_temperature == prototype.default_temperature and
+        prototype.default_temperature > -math.huge and
+        prototype.default_temperature < math.huge,
+        "create_fluid : default_temperature doit être un nombre fini")
     prototype.subgroup = prototype.subgroup and
         qualify_reference(prototype.subgroup, "item-subgroup") or nil
     if not prototype.icons and not prototype.icon then
@@ -282,7 +299,11 @@ end
 function ore.create_resource(definition)
     assert_table(definition, "create_resource")
     local name = assert_name(definition.name, "create_resource")
-    if definition.vanilla then return false end
+    if definition.world ~= nil then
+        assert(type(definition.world) == "boolean",
+            "create_resource : world doit être un booléen")
+    end
+    if definition.vanilla or definition.world == false then return false end
 
     local prototype = copy_definition(definition)
     prototype.type = "resource"
@@ -310,6 +331,7 @@ function ore.create_recipe(definition)
     local prototype = copy_definition(definition)
     prototype.type = "recipe"
     prototype.name = prototype_name(name, "recipe", false)
+    prototype.ingredients = copy(definition.ingredients)
     prototype.category = prototype.category and
         qualify_reference(prototype.category, "recipe-category") or nil
     normalize_recipe_fields(prototype)
